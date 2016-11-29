@@ -34,7 +34,20 @@ app.controller('employeeListCtrl', function($scope, $http) {
 
 
     $scope.addEmployee = function() {
+        console.log("Add Employee is executing")
         $http.get('http://localhost:8080/emp/addEmployee')
+            .success(function (data, status, headers, config) {
+                $scope.empList = data;
+            })
+            .error(function (data, status, header, config) {
+                $scope.ResponseDetails = "Data: " + data +
+                    "<br />status: " + status ;
+            });
+    }
+
+    $scope.addNewEmployee = function(empId, empName, description) {
+        console.log("Called")
+        $http.get('http://localhost:8080/emp/addNewEmployee?empId='+empId+'&empName='+empName+'&description='+description)
             .success(function (data, status, headers, config) {
                 $scope.empList = data;
             })
