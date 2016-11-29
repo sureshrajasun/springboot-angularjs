@@ -1,0 +1,15 @@
+<div class="section">
+    <h3>{{headingTitle}}</h3>
+    <div ng-app="app" ng-controller="employeeListCtrl">
+        <button ng-click="getEmpList()">Get All Employee</button>
+        <ul>
+            <li ng-repeat="emp in empList">
+                {{emp.id}}
+                {{emp.name}}
+                {{emp.designation}}
+                <button ng-click="removeEmp(emp.id)">Remove Emp</button>
+                <button ng-click="addEmployee()">Add Emp</button>
+            </li>
+        </ul>
+    </div>
+</div>
